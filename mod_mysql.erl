@@ -13,7 +13,6 @@
 -include_lib("zotonic.hrl").
 -record(state, {context}).
 
-
 %% Module API
 
 start_link(Args) when is_list(Args) ->
