@@ -1,5 +1,5 @@
 -module(mod_mysql).
--author("Kirill Sysoev <iam@onnet.su>").
+-author("Kirill Sysoev <kirill.sysoev@gmail.com>").
 
 -behaviour(gen_server).
 
