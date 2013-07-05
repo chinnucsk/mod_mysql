@@ -22,13 +22,13 @@ start_link(Args) when is_list(Args) ->
 
 init(Args) ->
     {context, Context} = proplists:lookup(context, Args),
-%%    EMySQLPool = binary_to_list(m_config:get_value(mod_mysql, pool_name, Context)),
-    EMySQLPool = list_to_atom(binary_to_list(m_config:get_value(mod_mysql, pool_name, Context))),
+    EMySQLPool = binary_to_list(m_config:get_value(mod_mysql, pool_name, Context)),
+%%    EMySQLPool = list_to_atom(binary_to_list(m_config:get_value(mod_mysql, pool_name, Context))),
     MySQLHost = binary_to_list(m_config:get_value(mod_mysql, host, Context)),
     MySQLDB = binary_to_list(m_config:get_value(mod_mysql, db_name, Context)),
     MySQLUser = binary_to_list(m_config:get_value(mod_mysql, user, Context)),
     MySQLPwd = binary_to_list(m_config:get_value(mod_mysql, password, Context)),
-    emysql:add_pool(EMySQLPool, 1, MySQLUser, MySQLPwd, MySQLHost, 3306, MySQLDB, utf8),
+    emysql:add_pool(EMySQLPool, 5, MySQLUser, MySQLPwd, MySQLHost, 3306, MySQLDB, utf8),
     {ok, #state{context=z_context:new(Context)}}.
 
 handle_call(Message, _From, State) ->
